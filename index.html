@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>白雪華伝群。</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * {box-sizing: border-box; margin: 0; padding: 0;}
+    body {
+      font-family: 'Inter', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #dff6ff, #e8f9ff);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+      color: #2b3a42;
+    }
+
+    .glass {
+      max-width: 800px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 150, 255, 0.15);
+      padding: 2rem;
+      color: #2b3a42;
+    }
+
+    h1, h2 {
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #1e2f38;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; margin-top: 2rem; }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 10px;
+      color: #1e2f38;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    a.button:hover {
+      background: rgba(255,255,255,0.9);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #475a63;
+      user-select: none;
+      letter-spacing: 0.3px;
+    }
+
+    /* 画像カード */
+    .image-card {
+      max-width: 300px;       /* 画像とキャプション幅統一 */
+      margin: 1rem auto;      /* 上下余白 + 中央揃え */
+      text-align: center;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .image-card p {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #334b56;
+    }
+  </style>
+</head>
+<body>
+  <div class="glass">
+    <h1>ごきげんよう。</h1>
+
+    <section>
+      <h2>お前はだれ？</h2>
+      <p>はなゆみと申します。プロフィールを書こうと画策しましたが思ったより "浅い" 人間だと自覚し、書くことがないことに気づきました。カフェイン中毒者です。助けてほしい。</p>
+
+      <div class="image-card">
+        <img src="images/ochibi.jpg" alt="おちび">
+        <p>推しはおちびです。かわいいでしょ。</p>
+      </div>
+
+      <p>最近は皆様のお陰で良くしていただいているので本当に感謝してもしきれません。ありがとうございます。</p>
+
+      <div class="image-card">
+        <img src="images/mystery.jpg" alt="謎の画像">
+        <p>ところでこれは一体なに......?</p>
+      </div>
+
+      <p>もう書くことがありません。どうしよう。</p>
+      <p>あっ、自分一応趣味程度でプログラミングを嗜んでいます。ここ (Github) にこのページを上げているならせめて "Things I have made" 的なのをやったほうがいいのかもしれませんが、私が制作したやつは全て "Things I am not proud of" 的なアレなのでリポジトリを公開していません。時々 Fork しているリポジトリがあるかもしれないですが気にしないでください。</p>
+
+      <div class="image-card">
+        <img src="images/bot.jpg" alt="作ったbot">
+        <p>作った bot の 1 つです。これは何？</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>どうしよう、書くことがなくなった。</h2>
+      <p>この Web サイトは眠れないあまり一徹して音楽を聞きながら書いているのですが、Rising Higher を聞いている時に悟りました。</p><p>私には何もない。</p><p>ラピはレッドフードという憧れであり目標である師匠で友達を手に入れましたが、悲しいことに私の友達はレッドブルです。トホホ～！これじゃあ無理やり起きることしかできないよ～！</p>
+    </section>
+
+<section>
+  <h2>苦し紛れの質問返答コーナー編</h2>
+  <p><del>さすがにゴミみたいなことしか書いていないとすぐにブラウザバックされかねないので</del> 私のことを知ってもらうためにも質問に返答していきます。</p>
+
+  <p><strong>好きな食べ物は？</strong><br>
+  A. 三色団子。美味しいから。</p>
+
+  <p><strong>特技ある？</strong><br>
+  A. 実はないんですよ。器用貧乏とはよく言われます(泣)</p>
+
+  <p><strong>好きなアニメは？</strong><br>
+  A. なかなか難しい。魔法少女育成計画と虚構推理とかでどうですか？</p>
+
+  <p><strong>詳しいジャンルとか？</strong><br>
+  A. せめて言えばレトロゲーム全般です！一生語れます！</p>
+
+  <p><strong>好きなゲームは？</strong><br>
+  A. ソシャゲはメガニケですね～ PC だと Forza Horizon 5 や Rainbow Six Siege、BattleField V をやってたり。</p>
+
+  <p><strong>好きなキャラは？</strong><br>
+  A. メガニケ以外で言えばウマ娘のサイレンススズカとかめちゃくちゃ大好きです～！(元馬もめちゃくちゃ大好きです！)</p>
+
+  <p><strong>RedBull やめないの？</strong><br>
+  A. RB 以外飲めないのは宗教上の理由です。Oracle RedBull Racing という宗教なんですが......</p>
+
+  <p><strong>なぜ英単語の前後に半角スペースを添加するの？</strong><br>
+  A. わからない...... 完全にクセになっているのと半角スペースを添加したほうが可読性が上がるから......?</p>
+
+  <p><strong>なんで @Username が OchibichanMK2 なの？</strong><br>
+  A. 前垢の設定ミスって 5 年物のアカウントを凍結させたから！　う～ん、アホ！ｗ</p>
+
+  <p><strong>好きな曲とか？</strong><br>
+  A. 次章で記述します！</p>
+</section>
+
+<section>
+  <h2>全人類が聞くべき曲トップ 5</h2>
+
+  <p><strong>Astronaut Airlines - Xuxhiz</strong><br>
+  メガニケ最高のイベント楽曲です。聞かない人は逆賊です。</p>
+
+  <p><strong>Absolute Maker - Cosmograph, Corbin</strong><br>
+  メガニケ最高のボス曲です。聞かない人は逆賊です。</p>
+
+  <p><strong>THE REDHOOD - Cosmograph, NieN, Djerv</strong><br>
+  メガニケ最高のアニバ楽曲です。聞かない人は逆賊です。</p>
+
+  <p><strong>Unbreakable Sphere - Cosmograph, Nauts, Sunnie</strong><br>
+  メガニケ最高のアニバ楽曲 2 です。聞かない人は逆賊です。</p>
+
+  <p><strong>Scardi - Feryquitous</strong><br>
+  メガニケ最高の一般戦闘曲です。聞かない人は逆賊です。</p>
+</section>
+<section>
+<h1>ほかにもなにか思いついたらここを改築していきますよん。<h1>
+</section>
+  </div>
+
+  <footer>
+    Build with plain HTML. CSS / JS. No frameworks used. Last updated: 2025-10-17.  </footer>
+</body>
+</html>
