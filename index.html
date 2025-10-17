@@ -6,18 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>白雪華伝群。</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     * {box-sizing: border-box; margin: 0; padding: 0;}
     body {
-      font-family: 'Inter', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #dff6ff, #e8f9ff);
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 2rem;
-      color: #2b3a42;
-    }
+  font-family: 'Inter', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #dff6ff, #e8f9ff);
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  padding: 2rem;
+  color: #2b3a42;
+}
 
     .glass {
       max-width: 800px;
@@ -69,16 +70,30 @@
     }
 
     footer {
-      position: fixed;
-      bottom: 10px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #475a63;
-      user-select: none;
-      letter-spacing: 0.3px;
-    }
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.4); 
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.4rem 1rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: #475a63;
+  user-select: none;
+  letter-spacing: 0.3px;
+  opacity: 0; 
+  transition: opacity 0.8s ease;
+  pointer-events: none; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+footer.visible {
+  opacity: 1; /* ← 表示状態 */
+  pointer-events: all;
+}
 
     .image-card {
       max-width: 300px;       
@@ -97,9 +112,96 @@
       font-size: 0.9rem;
       color: #334b56;
     }
+    .profile-banner {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,150,255,0.2);
+  margin-bottom: 2.5rem;
+}
+
+.banner-img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.85);
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px) brightness(1.1);
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #FFF;
+}
+
+.banner-icon {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.7);
+  margin-bottom: 1rem;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.banner-overlay h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+color: #ffffff; 
+  text-shadow: 0 2px 6px rgba(0,0,0,0.2); 
+}
+
+.banner-overlay p {
+  font-size: 0.95rem;
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.social-icons a {
+  color: #dddddd;
+  font-size: 1.4rem;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #a8cfff;
+  transform: translateY(-2px);
+}
   </style>
 </head>
 <body>
+<header class="profile-banner">
+  <img src="images/header.jpg" alt="ヘッダー画像" class="banner-img">
+  <div class="banner-overlay">
+    <img src="images/icon.jpg" alt="アイコン" class="banner-icon">
+    <h1>はなゆみ。</h1>
+    <p>カフェインをこよなく愛する中毒者。白と水色が好き。</p>
+    <div class="social-icons">
+      <a href="https://github.com/HanayumiR" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/OchibichanMK2" target="_blank" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
+      <a href="https://peing.net/ja/ochibichanmk2" target="_blank" title="質問箱"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</header>
+
   <div class="glass">
     <h1>ごきげんよう。</h1>
 
@@ -197,11 +299,23 @@
 <h1>ほかにもなにか思いついたらここを改築していきますよん。<h1>
 </section>
   </div>
+<script>
+window.addEventListener("scroll", () => {
+  const footer = document.querySelector("footer");
+  const scrollPosition = window.innerHeight + window.scrollY;
+  const pageHeight = document.body.offsetHeight;
 
+  if (scrollPosition >= pageHeight - 50) {
+    footer.classList.add("visible");   } else {
+    footer.classList.remove("visible"); 
+  }
+});
+</script>
   <footer>
-    Build with plain HTML. CSS / JS. No frameworks used. Last updated: 2025-10-17.  </footer>
+    Build with HTML5 and CSS. / JS and no frameworks used. / Last updated: 2025-10-18.  </footer>
 </body>
 </html>
+
 
 
 
