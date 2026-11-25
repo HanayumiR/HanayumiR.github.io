@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh Japanese Apple Music catalog metadata; never fetch audio or artwork."""
+"""Refresh Japanese Apple Music metadata and official artwork URLs only."""
 
 from __future__ import annotations
 
@@ -82,6 +82,7 @@ def fetch_tracks(albums: dict[int, dict]) -> list[dict]:
                 "durationMs": item.get("trackTimeMillis", 0),
                 "releaseDate": item.get("releaseDate", "")[:10],
                 "appleUrl": item.get("trackViewUrl", ""),
+                "artworkUrl100": item.get("artworkUrl100") or album.get("artworkUrl100", ""),
             }
     return sorted(
         tracks.values(),
