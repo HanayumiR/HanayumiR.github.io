@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f3f1eb">
-  <meta name="description" content="NIKKEサウンドトラックを二曲ずつ聴き比べて、自分のランキングを作る。">
-  <title>NIKKE SOUND DUEL — 好きな一曲を選ぶ</title>
+  <meta name="description" content="勝利の女神：NIKKEの楽曲を二曲ずつ聴き比べるSound Duel。">
+  <title>Sound Duel — NIKKE Music</title>
   <style>
     :root {
       color-scheme: light;
-      --paper: #f3f1eb;
-      --white: #fffef9;
-      --ink: #171915;
-      --muted: #696a62;
-      --rule: #c8c6bc;
-      --red: #d84932;
-      --blue: #3759d7;
-      --acid: #d9eb62;
+      --paper: #f1eee5;
+      --white: #fffcf5;
+      --ink: #151814;
+      --muted: #64665d;
+      --rule: #c7c2b7;
+      --red: #d14c32;
+      --blue: #304d83;
+      --acid: #e6bd52;
       --font-sans: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
       --font-serif: "Yu Mincho", "Hiragino Mincho ProN", Georgia, serif;
       font-family: var(--font-sans);
@@ -34,7 +34,7 @@
     button { cursor: pointer; }
     .site-header { background: var(--ink); color: var(--white); }
     .header-inner {
-      width: min(1220px, calc(100% - 48px)); min-height: 66px; margin: 0 auto;
+      width: min(1140px, calc(100% - 48px)); min-height: 66px; margin: 0 auto;
       display: flex; justify-content: space-between; align-items: stretch;
     }
     .brand {
@@ -43,7 +43,7 @@
     }
     .brand-mark {
       display: grid; place-items: center; width: 27px; height: 27px; border: 1px solid var(--acid);
-      border-radius: 50%; color: var(--acid); font: 16px Georgia, serif;
+      color: var(--acid); font: 16px Georgia, serif;
     }
     .brand em { color: var(--acid); font-style: normal; }
     .main-nav { display: flex; }
@@ -53,21 +53,24 @@
     }
     .main-nav button:last-child { border-right: 1px solid #454640; }
     .main-nav button[aria-pressed="true"] { color: white; box-shadow: inset 0 -3px var(--acid); }
-    main { width: min(1220px, calc(100% - 48px)); margin: auto; padding: 45px 0 72px; }
+    main { width: min(1140px, calc(100% - 48px)); margin: auto; padding: 50px 0 72px; }
     .intro {
-      display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 36px;
-      align-items: end; padding: 0 0 30px; border-bottom: 1px solid var(--ink);
+      display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 42px;
+      align-items: end; padding: 0 0 28px; border-bottom: 2px solid var(--ink);
     }
     .kicker {
-      margin: 0 0 13px; color: var(--red); font-size: 12px; font-weight: 900;
-      letter-spacing: .17em;
+      margin: 0 0 15px; color: var(--red); font-size: 11px; font-weight: 900;
+      letter-spacing: .2em;
     }
     h1 {
-      margin: 0; max-width: 840px; font: 700 clamp(37px, 6.5vw, 76px)/1.05 var(--font-serif);
-      letter-spacing: -.06em;
+      margin: 0; max-width: 840px; font: 700 clamp(40px, 7vw, 84px)/.98 var(--font-serif);
+      letter-spacing: -.075em;
     }
     h1 span { color: var(--red); }
-    .intro-copy { max-width: 670px; margin: 17px 0 0; color: #44463f; font-size: 15px; line-height: 1.8; }
+    .intro-copy { max-width: 630px; margin: 19px 0 0; color: #44463f; font-size: 14px; line-height: 1.85; }
+    .hero-index { align-self: stretch; display: flex; flex-direction: column; justify-content: end; padding: 0 0 3px 18px; border-left: 1px solid var(--ink); }
+    .hero-index strong { font: 700 13px/1.5 Georgia, serif; letter-spacing: .08em; }
+    .hero-index span { margin-top: 7px; color: var(--muted); font-size: 11px; line-height: 1.7; }
     .catalog-stat { align-self: stretch; display: flex; flex-direction: column; justify-content: end; padding-left: 19px; border-left: 2px solid var(--ink); }
     .catalog-stat-label { font-size: 11px; font-weight: 900; letter-spacing: .13em; }
     .catalog-number { margin: 4px 0 0; font: 700 54px/.98 Georgia, serif; font-variant-numeric: tabular-nums; }
@@ -78,30 +81,30 @@
     }
     .match-note strong { color: var(--blue); white-space: nowrap; }
     .toolbar {
-      display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 20px;
-      padding: 20px 0 17px; border-bottom: 1px solid var(--rule);
+      display: block; padding: 20px 0 16px; border-bottom: 1px solid var(--rule);
     }
-    .search-wrap { position: relative; max-width: 650px; }
+    .search-wrap { position: relative; max-width: 100%; }
     .search-wrap label {
       display: block; margin: 0 0 6px; color: var(--muted); font-size: 12px;
       font-weight: 800; letter-spacing: .06em;
     }
     .search-wrap input {
-      width: 100%; padding: 9px 4px 9px 0; border: 0; border-bottom: 1px solid var(--ink);
-      border-radius: 0; background: transparent; font-size: 16px;
+      width: 100%; padding: 11px 12px; border: 1px solid var(--ink);
+      border-radius: 0; background: var(--white); font-size: 15px;
     }
     .search-wrap input::placeholder { color: #85857c; }
     .search-results {
       position: absolute; z-index: 10; top: calc(100% + 8px); left: 0;
-      width: min(650px, calc(100vw - 40px)); max-height: 370px; overflow: auto;
+      width: min(700px, calc(100vw - 40px)); max-height: 370px; overflow: auto;
       border: 1px solid var(--ink); background: var(--white); box-shadow: 5px 5px 0 var(--ink);
     }
     .search-results[hidden] { display: none; }
     .result-row {
-      display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center;
+      display: grid; grid-template-columns: 42px minmax(0, 1fr) auto auto; align-items: center;
       gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--rule);
     }
     .result-copy { min-width: 0; }
+    .result-art { display: block; width: 38px; height: 38px; object-fit: cover; background: #d8d4c9; }
     .result-copy strong, .result-copy span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .result-copy strong { font-size: 14px; }
     .result-copy span { margin-top: 2px; color: var(--muted); font-size: 12px; }
@@ -110,14 +113,14 @@
       background: transparent; font-size: 12px; font-weight: 800;
     }
     .assign:hover { background: var(--acid); }
-    .toolbar-note { max-width: 280px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; text-align: right; }
+    .toolbar-note { display: none; }
     .duel-heading {
       display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
-      margin: 29px 0 13px;
+      margin: 27px 0 13px;
     }
     .duel-heading h2 { margin: 0; font: 700 21px/1.2 var(--font-serif); }
     .duel-heading p { margin: 0; color: var(--muted); font-size: 12px; }
-    .duel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; }
+    .duel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 54px; }
     .track-card { min-width: 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); }
     .track-card[data-slot="a"] { --side: var(--red); }
     .track-card[data-slot="b"] { --side: var(--blue); }
@@ -129,7 +132,7 @@
     .availability { color: var(--muted); font-size: 11px; }
     .cover-stage {
       position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 1;
-      background: #dad8cf; border-bottom: 1px solid var(--ink);
+      background: #d8d4c9; border-bottom: 1px solid var(--ink);
     }
     .record {
       position: absolute; z-index: 1; left: 50%; bottom: 0; width: 66%; aspect-ratio: 1;
@@ -164,7 +167,8 @@
       overflow: hidden; transform: translateX(-50%);
       box-shadow: 0 8px 15px #17191542;
     }
-    .sleeve canvas { display: block; width: 100%; height: 100%; }
+    .sleeve-art { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .sleeve-fallback { display: grid; width: 100%; height: 100%; place-items: center; padding: 14%; background: #d3c7ad; color: var(--ink); text-align: center; font: 700 clamp(18px, 3vw, 32px)/1.1 var(--font-serif); }
     .sleeve-mark {
       position: absolute; top: 10px; left: 10px; padding: 4px 6px;
       background: #fffef9dc; color: var(--ink); font-size: 9px; font-weight: 900; letter-spacing: .1em;
@@ -216,13 +220,14 @@
     .ranking-intro { margin: 8px 0 17px; color: var(--muted); font-size: 13px; }
     .ranking-list { list-style: none; margin: 0; padding: 0; }
     .ranking-row {
-      display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; align-items: center;
+      display: grid; grid-template-columns: 38px 54px minmax(0, 1fr) auto; align-items: center;
       gap: 14px; padding: 13px 0; border-top: 1px solid var(--rule);
     }
     .rank-number { color: var(--red); font: 700 21px Georgia, serif; }
     .rank-title { font-size: 15px; font-weight: 900; }
     .rank-meta { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; font-weight: 400; }
     .rank-votes { color: var(--muted); font: 14px Georgia, serif; font-variant-numeric: tabular-nums; }
+    .rank-art { width: 54px; height: 54px; object-fit: cover; }
     footer { margin-top: 45px; padding-top: 17px; border-top: 1px solid var(--ink); color: var(--muted); font-size: 12px; line-height: 1.8; }
     footer p { max-width: 920px; margin: 0 0 8px; }
     footer a { color: inherit; text-underline-offset: 3px; }
@@ -235,6 +240,7 @@
       .main-nav button { min-width: 78px; padding: 0 10px; font-size: 12px; }
       main { padding-top: 30px; }
       .intro { grid-template-columns: 1fr; gap: 21px; padding-bottom: 21px; }
+      .hero-index { display: none; }
       h1 { font-size: clamp(38px, 10vw, 59px); }
       .catalog-stat { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; align-items: baseline; padding-left: 11px; }
       .catalog-stat-label { grid-column: 1 / -1; }
@@ -259,9 +265,9 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="./" aria-label="NIKKE SOUND DUEL ホーム">
-        <span class="brand-mark" aria-hidden="true">●</span>
-        <span>NIKKE SOUND <em>DUEL</em></span>
+      <a class="brand" href="./" aria-label="Sound Duel ホーム">
+        <span class="brand-mark" aria-hidden="true">◉</span>
+        <span>SOUND <em>DUEL</em></span>
       </a>
       <nav class="main-nav" aria-label="ページ">
         <button id="compareTab" type="button" aria-pressed="true">曲を比べる</button>
@@ -272,21 +278,15 @@
   <main>
     <section class="intro" aria-labelledby="headline">
       <div>
-        <p class="kicker">GODDESS OF VICTORY: NIKKE / SOUND ARCHIVE</p>
-        <h1 id="headline">最後に残るのは、<br><span>どっちの一曲？</span></h1>
-        <p class="intro-copy">ジャケットを選んで、二曲を聴き比べる。好きなほうに一票を入れて、自分だけのNIKKEサウンドランキングを作ろう。</p>
+        <p class="kicker">GODDESS OF VICTORY: NIKKE / ORIGINAL SOUNDTRACK</p>
+        <h1 id="headline">どっちの曲が、<br><span>好き？</span></h1>
+        <p class="intro-copy">ジャケットからレコードを引き出して、二曲を聴き比べる。あなたの一票で、みんなのランキングが変わる。</p>
       </div>
-      <div class="catalog-stat" aria-live="polite">
-        <span class="catalog-stat-label">APPLE MUSIC JP CATALOG</span>
-        <strong class="catalog-number" id="catalogCount">—</strong>
-        <p class="catalog-detail" id="catalogDetail">掲載曲を読み込み中</p>
+      <div class="hero-index">
+        <strong>SELECT / LISTEN / VOTE</strong>
+        <span>二曲を選ぶ。<br>一曲に投票する。</span>
       </div>
     </section>
-
-    <div class="match-note">
-      <strong id="matchCount">YouTube照合中</strong>
-      <span>曲情報はApple Music日本カタログから。音源はCosmograph公式チャンネルに同名動画がある曲だけ、YouTube公式プレーヤーで再生します。</span>
-    </div>
 
     <section class="toolbar" aria-label="曲を探す">
       <div class="search-wrap">
@@ -294,7 +294,7 @@
         <input id="songSearch" type="search" autocomplete="off" placeholder="曲名を入力">
         <div id="searchResults" class="search-results" role="list" hidden></div>
       </div>
-      <p class="toolbar-note">検索結果からA面・B面へ曲を置き換えられます。公式動画のない曲も、カタログから選んで比較できます。</p>
+      <p class="toolbar-note">曲名から探す</p>
     </section>
 
     <section id="compareView" aria-labelledby="duelTitle">
@@ -304,29 +304,27 @@
       </div>
       <div class="duel" id="duel" aria-live="polite"></div>
       <div class="compare-footer">
-        <p>一票はこのブラウザーに保存されます。公開サイトを訪れた人どうしの合算ランキングではありません。</p>
+        <p id="voteNotice" role="status">投票をみんなのランキングに反映します。</p>
         <button class="new-pair" id="newPair" type="button">別の二曲を選ぶ</button>
       </div>
       <p class="status" id="status" role="status" aria-live="polite"></p>
     </section>
 
     <section id="rankingView" class="ranking" aria-labelledby="rankingTitle" hidden>
-      <h2 id="rankingTitle">あなたのランキング</h2>
-      <p class="ranking-intro">投票はこのブラウザーに保存されます。</p>
+      <h2 id="rankingTitle">みんなのランキング</h2>
+      <p class="ranking-intro">投票数の多い順。最新の集計を表示します。</p>
+      <button class="new-pair" id="refreshRanking" type="button">ランキングを更新</button>
       <ol id="rankingList" class="ranking-list"></ol>
     </section>
 
     <footer>
-      <p>曲名・アーティスト・アルバム情報はApple Music日本カタログを参照。YouTubeの音声はCosmograph公式チャンネルの動画を、YouTube公式プレーヤー内で再生します。音源ファイル、Apple Musicの試聴音源、アルバム画像はこのサイトに保存しません。</p>
-      <p>Cosmograph公式チャンネルに掲載されていない曲や、同じ曲名の公式動画を確認できない曲は、サイト内で再生できません。Apple Musicの掲載曲がNIKKEの全ゲーム内楽曲を網羅することも保証しません。</p>
-      <p><a href="https://music.apple.com/jp/" target="_blank" rel="noreferrer">Apple Music</a> ·
-        <a href="https://www.youtube.com/@Cosmograph" target="_blank" rel="noreferrer">Cosmograph公式チャンネル</a> ·
-        <a href="https://nikke-en.com/termsofservice/gl" target="_blank" rel="noreferrer">NIKKE利用規約</a></p>
-      <p>NIKKE、SHIFT UP、PROXIMA BETA、Cosmograph、Apple、YouTubeとは関係のないファン制作サイトです。</p>
+      <p>曲情報・ジャケット: Apple Music Japan ／ 音源: Cosmograph公式YouTube。試聴はYouTube公式プレーヤーを使用します。</p>
+      <p>NIKKEおよび関連する名称・楽曲・ジャケットの権利は各権利者に帰属します。非公式ファンサイト。</p>
       <p id="updatedAt"></p>
     </footer>
   </main>
 
+  <script src="./config.js"></script>
   <script>
     const $ = function (id) { return document.getElementById(id); };
     const palette = ["#d7a63a", "#b64231", "#314d63", "#d7cfc0", "#64754a", "#3b3d58", "#d3ece1", "#c77442"];
@@ -334,13 +332,26 @@
     let currentPair = [];
     let votes = {};
     let hasVoted = false;
+    let databaseReady = false;
+    let voterId = "";
+    let votedTrackIds = new Set();
     let round = 0;
     let renderToken = 0;
     let players = { a: null, b: null };
     let youtubeApiPromise = null;
+    const supabaseConfig = window.SOUND_DUEL_CONFIG || {};
 
-    try { votes = JSON.parse(localStorage.getItem("nikke-sound-duel-votes")) || {}; }
-    catch (error) { votes = {}; }
+    try {
+      voterId = localStorage.getItem("sound-duel-voter-id") || "";
+      if (!voterId && window.crypto && typeof window.crypto.randomUUID === "function") {
+        voterId = window.crypto.randomUUID();
+        localStorage.setItem("sound-duel-voter-id", voterId);
+      }
+      votedTrackIds = new Set(JSON.parse(localStorage.getItem("sound-duel-voted-tracks") || "[]"));
+    } catch (error) {
+      voterId = "";
+      votedTrackIds = new Set();
+    }
 
     function escapeHtml(value) {
       return String(value == null ? "" : value).replace(/[&<>"']/g, function (character) {
@@ -375,9 +386,44 @@
       return youtubeApiPromise;
     }
 
-    function safeLocalSave() {
-      try { localStorage.setItem("nikke-sound-duel-votes", JSON.stringify(votes)); }
-      catch (error) { $("status").textContent = "このブラウザーでは投票を保存できません。"; }
+    function supabaseUrl(path) {
+      return String(supabaseConfig.url || "").replace(/\/+$/, "") + "/rest/v1/rpc/" + path;
+    }
+
+    function supabaseHeaders() {
+      return { "apikey": supabaseConfig.publishableKey || "", "Content-Type": "application/json" };
+    }
+
+    function supabaseConfigured() {
+      return /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(String(supabaseConfig.url || "")) &&
+        /^sb_publishable_[A-Za-z0-9_-]+$/.test(String(supabaseConfig.publishableKey || ""));
+    }
+
+    async function fetchSharedVotes() {
+      if (!supabaseConfigured()) throw new Error("共有ランキングの接続設定がまだありません。");
+      const response = await fetch(supabaseUrl("get_sound_duel_rankings"), {
+        method: "POST",
+        headers: supabaseHeaders(),
+        body: "{}"
+      });
+      if (!response.ok) throw new Error("共有ランキングを読み込めませんでした。");
+      const rows = await response.json();
+      const result = {};
+      (Array.isArray(rows) ? rows : []).forEach(function (row) {
+        result[String(row.track_id)] = Number(row.vote_count) || 0;
+      });
+      return result;
+    }
+
+    async function sendSharedVote(trackId) {
+      const response = await fetch(supabaseUrl("cast_sound_duel_vote"), {
+        method: "POST",
+        headers: supabaseHeaders(),
+        body: JSON.stringify({ p_track_id: String(trackId), p_voter_id: voterId })
+      });
+      if (!response.ok) throw new Error("投票を送信できませんでした。時間をおいて再度お試しください。");
+      const rows = await response.json();
+      return Array.isArray(rows) ? rows[0] : rows;
     }
 
     function hashText(value) {
@@ -390,88 +436,22 @@
       return hash >>> 0;
     }
 
-    function paintSleeve(canvas, track, slot) {
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return palette[slot === "a" ? 0 : 2];
-      const size = 640;
-      canvas.width = size;
-      canvas.height = size;
-      const seed = hashText(track.id || track.title);
-      let state = seed || 17;
-      const random = function () {
-        state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
-        return state / 4294967296;
-      };
-      const base = palette[seed % palette.length];
-      const second = palette[(seed >>> 5) % palette.length];
-      const third = palette[(seed >>> 11) % palette.length];
-      ctx.fillStyle = base;
-      ctx.fillRect(0, 0, size, size);
-      ctx.save();
-      ctx.globalAlpha = .55;
-      ctx.fillStyle = second;
-      ctx.beginPath();
-      ctx.moveTo(size * (.32 + random() * .16), 0);
-      ctx.lineTo(size, 0);
-      ctx.lineTo(size, size);
-      ctx.lineTo(size * (.56 + random() * .16), size);
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-
-      ctx.save();
-      ctx.globalAlpha = .82;
-      ctx.fillStyle = third;
-      const circle = size * (.18 + random() * .1);
-      ctx.beginPath();
-      ctx.arc(size * (.36 + random() * .2), size * (.36 + random() * .16), circle, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-
-      ctx.strokeStyle = "rgba(255,255,255,.44)";
-      ctx.lineWidth = 2;
-      for (let line = 0; line < 13; line++) {
-        const y = 55 + line * 39;
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(size, y + (line % 2 ? 20 : -20));
-        ctx.stroke();
-      }
-
-      ctx.fillStyle = "rgba(18,20,17,.76)";
-      ctx.fillRect(0, size - 154, size, 154);
-      ctx.fillStyle = "#fffef9";
-      ctx.font = "800 18px Arial, sans-serif";
-      ctx.fillText("NIKKE SOUND ARCHIVE", 34, size - 115);
-      ctx.font = "700 42px Georgia, 'Yu Mincho', serif";
-      const words = String(track.title || "UNTITLED").split(/\s+/);
-      let line = "";
-      let y = size - 66;
-      for (let i = 0; i < words.length; i++) {
-        const next = line ? line + " " + words[i] : words[i];
-        if (ctx.measureText(next).width > size - 70 && line) {
-          ctx.fillText(line, 34, y);
-          line = words[i];
-          y -= 47;
-          if (y < size - 148) break;
-        } else {
-          line = next;
-        }
-      }
-      if (line && y >= size - 148) ctx.fillText(line, 34, y);
-      return palette[(seed >>> 17) % palette.length];
-    }
-
     function channelSearchUrl(track) {
       return "https://www.youtube.com/@Cosmograph/search?query=" + encodeURIComponent(track.title || "");
     }
 
+    function artworkUrl(track) {
+      const source = String(track.artworkUrl100 || "");
+      if (!/^https:\/\/(?:[a-z0-9-]+\.)*mzstatic\.com\//i.test(source)) return "";
+      return source.replace(/\/\d+x\d+bb\./i, "/600x600bb.");
+    }
+
     function cardMarkup(track, slot) {
       const label = slot === "a" ? "SIDE A" : "SIDE B";
-      const availability = track.youtube ? "公式動画を照合済み" : "公式動画は未照合";
+      const availability = track.youtube ? "COSMOGRAPH / VIDEO" : "COSMOGRAPH / SEARCH";
       const action = track.youtube
         ? '<button class="listen" type="button" data-listen="' + slot + '" aria-expanded="false">YouTubeで試聴</button>'
-        : '<a class="channel-search" href="' + escapeHtml(channelSearchUrl(track)) + '" target="_blank" rel="noreferrer">Cosmographで曲名を探す</a>';
+        : '<a class="channel-search" href="' + escapeHtml(channelSearchUrl(track)) + '" target="_blank" rel="noreferrer">公式チャンネルで探す</a>';
       const youtubePanel = track.youtube
         ? '<div class="player-panel" id="player-panel-' + slot + '" hidden><p class="player-note"><span>音源 · Cosmograph公式チャンネル</span><span>YouTube公式プレーヤー</span></p><div class="player-mount" id="player-mount-' + slot + '"></div><a class="youtube-source" href="https://www.youtube.com/watch?v=' + encodeURIComponent(track.youtube.videoId) + '" target="_blank" rel="noreferrer">YouTubeで動画を開く</a></div>'
         : "";
@@ -481,11 +461,15 @@
       const appleLink = track.appleUrl
         ? '<a class="apple-link" href="' + escapeHtml(track.appleUrl) + '" target="_blank" rel="noreferrer">Apple Musicで見る</a>'
         : "";
+      const artwork = artworkUrl(track);
+      const sleeve = artwork
+        ? '<img class="sleeve-art" src="' + escapeHtml(artwork) + '" alt="' + escapeHtml(track.title) + ' のジャケット" loading="eager"><span class="sleeve-fallback" hidden>' + escapeHtml(track.title) + '</span>'
+        : '<span class="sleeve-fallback">' + escapeHtml(track.title) + '</span>';
       return '<article class="track-card" data-slot="' + slot + '">' +
         '<div class="card-head"><span class="side-label">' + label + '</span><span class="availability">' + availability + '</span></div>' +
         '<div class="cover-stage" id="cover-' + slot + '">' +
           '<div class="record" aria-hidden="true" style="--record-label:' + palette[hashText(track.id) % palette.length] + '"><div class="record-spin"><div class="record-disc"></div></div></div>' +
-          '<div class="sleeve"><canvas class="sleeve-art" width="640" height="640" aria-hidden="true"></canvas><span class="sleeve-mark">NIKKE / OST</span></div>' +
+          '<div class="sleeve">' + sleeve + '</div>' +
         '</div>' +
         '<div class="track-info"><h3>' + escapeHtml(track.title) + '</h3><p class="track-artist">' + artist + '</p><p class="track-album">' + album + (date ? " · " + date : "") + '</p></div>' +
         '<div class="card-actions">' + action + appleLink + '</div>' +
@@ -519,14 +503,24 @@
       $("duel").innerHTML = cardMarkup(trackA, "a") + cardMarkup(trackB, "b");
       for (const slot of ["a", "b"]) {
         const track = currentPair[slot === "a" ? 0 : 1];
-        const canvas = $("duel").querySelector('[data-slot="' + slot + '"] canvas');
-        if (canvas) paintSleeve(canvas, track, slot);
+        const card = $("duel").querySelector('[data-slot="' + slot + '"]');
+        const image = card.querySelector(".sleeve-art");
+        if (image) image.addEventListener("error", function () {
+          image.hidden = true;
+          const fallback = image.nextElementSibling;
+          if (fallback) fallback.hidden = false;
+        }, { once: true });
       }
       $("duel").querySelectorAll("[data-listen]").forEach(function (button) {
         button.addEventListener("click", function () { openPlayer(button.getAttribute("data-listen")); });
       });
       $("duel").querySelectorAll("[data-vote]").forEach(function (button) {
         button.addEventListener("click", function () { castVote(button.getAttribute("data-vote")); });
+        const track = currentPair[button.getAttribute("data-vote") === "a" ? 0 : 1];
+        const alreadyVoted = track && votedTrackIds.has(track.id);
+        button.disabled = !databaseReady || alreadyVoted;
+        if (!databaseReady) button.textContent = "ランキング接続後に投票";
+        else if (alreadyVoted) button.textContent = "投票済み · " + Number(votes[track.id] || 0) + "票";
       });
       $("searchResults").hidden = true;
       $("songSearch").value = "";
@@ -603,20 +597,44 @@
       }
     }
 
-    function castVote(slot) {
+    async function castVote(slot) {
       if (hasVoted) return;
       const track = currentPair[slot === "a" ? 0 : 1];
       if (!track) return;
-      votes[track.id] = Number(votes[track.id] || 0) + 1;
-      hasVoted = true;
-      safeLocalSave();
-      $("duel").querySelectorAll("[data-vote]").forEach(function (button) { button.disabled = true; });
-      $("duel").querySelector('[data-vote="' + slot + '"]').textContent = "投票しました · " + votes[track.id] + "票";
-      $("status").textContent = "「" + track.title + "」に一票を入れました。";
-      renderRanking();
+      if (!databaseReady || !voterId) {
+        $("status").textContent = "共有ランキングの接続設定後に投票できます。";
+        return;
+      }
+      const buttons = Array.from($("duel").querySelectorAll("[data-vote]"));
+      buttons.forEach(function (button) { button.disabled = true; });
+      const selectedButton = $("duel").querySelector('[data-vote="' + slot + '"]');
+      selectedButton.textContent = "投票を送信中…";
+      try {
+        const result = await sendSharedVote(track.id);
+        votes[track.id] = Number(result && result.vote_count) || 0;
+        votedTrackIds.add(track.id);
+        try { localStorage.setItem("sound-duel-voted-tracks", JSON.stringify(Array.from(votedTrackIds))); } catch (error) {}
+        hasVoted = true;
+        selectedButton.textContent = result && result.accepted ? "投票しました · " + votes[track.id] + "票" : "投票済み · " + votes[track.id] + "票";
+        $("status").textContent = result && result.accepted
+          ? "「" + track.title + "」への一票をみんなのランキングに加えました。"
+          : "この曲にはすでに投票済みです。";
+        renderRanking();
+      } catch (error) {
+        buttons.forEach(function (button) {
+          const candidate = currentPair[button.getAttribute("data-vote") === "a" ? 0 : 1];
+          button.disabled = !databaseReady || votedTrackIds.has(candidate.id);
+        });
+        selectedButton.textContent = "この曲に投票する · " + Number(votes[track.id] || 0) + "票";
+        $("status").textContent = error.message || "投票を送信できませんでした。";
+      }
     }
 
     function renderRanking() {
+      if (!databaseReady) {
+        $("rankingList").innerHTML = '<li class="empty-state">共有ランキングの接続設定後に表示されます。</li>';
+        return;
+      }
       const ranked = tracks
         .filter(function (track) { return Number(votes[track.id] || 0) > 0; })
         .sort(function (a, b) { return Number(votes[b.id] || 0) - Number(votes[a.id] || 0) || a.title.localeCompare(b.title, "ja"); })
@@ -626,7 +644,9 @@
         return;
       }
       $("rankingList").innerHTML = ranked.map(function (track, index) {
-        return '<li class="ranking-row"><span class="rank-number">' + String(index + 1).padStart(2, "0") + '</span><span class="rank-title">' +
+        const artwork = artworkUrl(track);
+        const thumb = artwork ? '<img class="rank-art" src="' + escapeHtml(artwork) + '" alt="" loading="lazy">' : '<span class="rank-art"></span>';
+        return '<li class="ranking-row"><span class="rank-number">' + String(index + 1).padStart(2, "0") + '</span>' + thumb + '<span class="rank-title">' +
           escapeHtml(track.title) + '<span class="rank-meta">' + escapeHtml(track.artist) + ' · ' + escapeHtml(track.album) +
           '</span></span><span class="rank-votes">' + Number(votes[track.id] || 0) + '票</span></li>';
       }).join("");
@@ -649,9 +669,10 @@
         return;
       }
       box.innerHTML = found.map(function (track) {
-        const matchText = track.youtube ? "YouTube照合済み" : "YouTube未照合";
-        return '<div class="result-row" role="listitem"><div class="result-copy"><strong>' + escapeHtml(track.title) +
-          '</strong><span>' + escapeHtml(track.artist) + ' · ' + escapeHtml(track.album) + ' · ' + matchText +
+        const artwork = artworkUrl(track);
+        const thumb = artwork ? '<img class="result-art" src="' + escapeHtml(artwork) + '" alt="" loading="lazy">' : '<span class="result-art"></span>';
+        return '<div class="result-row" role="listitem">' + thumb + '<div class="result-copy"><strong>' + escapeHtml(track.title) +
+          '</strong><span>' + escapeHtml(track.artist) + ' · ' + escapeHtml(track.album) +
           '</span></div><button class="assign" type="button" data-assign="a" data-id="' + escapeHtml(track.id) + '">A面へ</button>' +
           '<button class="assign" type="button" data-assign="b" data-id="' + escapeHtml(track.id) + '">B面へ</button></div>';
       }).join("");
@@ -660,8 +681,7 @@
 
     function pickRandomPair() {
       if (tracks.length < 2) throw new Error("比較には二曲以上の掲載曲が必要です。");
-      const playable = tracks.filter(function (track) { return !!track.youtube; });
-      const pool = playable.length >= 2 ? playable : tracks;
+      const pool = tracks;
       const first = Math.floor(Math.random() * pool.length);
       let second = Math.floor(Math.random() * (pool.length - 1));
       if (second >= first) second++;
@@ -674,7 +694,24 @@
       $("rankingView").hidden = compareActive;
       $("compareTab").setAttribute("aria-pressed", String(compareActive));
       $("rankingTab").setAttribute("aria-pressed", String(!compareActive));
-      if (!compareActive) renderRanking();
+      if (!compareActive) refreshRanking();
+    }
+
+    async function refreshRanking() {
+      const button = $("refreshRanking");
+      if (button) button.disabled = true;
+      try {
+        votes = await fetchSharedVotes();
+        databaseReady = true;
+        $("voteNotice").textContent = "投票はみんなのランキングに反映されます。";
+        renderRanking();
+      } catch (error) {
+        databaseReady = false;
+        $("voteNotice").textContent = "共有ランキングの接続設定待ちです。";
+        renderRanking();
+      } finally {
+        if (button) button.disabled = false;
+      }
     }
 
     async function initialize() {
@@ -690,12 +727,10 @@
         return Object.assign({}, track, { youtube: matchMap[String(track.id)] || null });
       });
       if (!tracks.length) throw new Error("Apple Music日本カタログに比較できる曲がありません。");
-      $("catalogCount").textContent = String(tracks.length);
-      $("catalogDetail").textContent = "日本の掲載曲 · " + Object.keys(matchMap).length + "曲を公式動画に照合";
-      $("matchCount").textContent = "YouTube照合 " + Object.keys(matchMap).length + " / " + tracks.length + "曲";
       $("updatedAt").textContent = "カタログ更新: " + (catalog.updatedAt || "未記録");
       $("compareTab").addEventListener("click", function () { activateTab("compare"); });
       $("rankingTab").addEventListener("click", function () { activateTab("ranking"); });
+      $("refreshRanking").addEventListener("click", refreshRanking);
       $("newPair").addEventListener("click", pickRandomPair);
       $("songSearch").addEventListener("input", function (event) { showSearchResults(event.target.value); });
       $("searchResults").addEventListener("click", function (event) {
@@ -719,14 +754,14 @@
       $("duel").addEventListener("click", function (event) {
         if (event.target.closest("[data-listen]")) return;
       });
+      await refreshRanking();
       pickRandomPair();
     }
 
     initialize().catch(function (error) {
       $("duel").innerHTML = '<p class="empty-state">' + escapeHtml(error.message || "ページを読み込めませんでした。") +
         '<br>GitHub Pages、またはローカルWebサーバーから開いてください。</p>';
-      $("catalogDetail").textContent = "データを読み込めません";
-      $("matchCount").textContent = "カタログを読み込めませんでした";
+      $("voteNotice").textContent = "共有ランキングを読み込めませんでした。";
     });
   </script>
 </body>
