@@ -1,0 +1,45 @@
+name: Refresh NIKKE Sound Duel Catalog
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nikke-catalog-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Check YouTube API key
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          if [ -z "$YOUTUBE_API_KEY" ]; then
+            echo "::error::Add YOUTUBE_API_KEY to repository Actions secrets before running this workflow."
+            exit 1
+          fi
+      - name: Refresh Apple Music catalog metadata
+        run: python nikke-sound-duel/scripts/import-apple-catalog.py
+      - name: Match Cosmograph official uploads
+        run: python nikke-sound-duel/scripts/import-cosmograph-matches.py
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      - name: Commit catalog updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add nikke-sound-duel/data/nikke-ost.json nikke-sound-duel/data/cosmograph-matches.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Refresh NIKKE Sound Duel catalog"
+          git push
+
